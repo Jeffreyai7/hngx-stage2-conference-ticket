@@ -1,26 +1,26 @@
 
 const TicketSelection = () => {
   return (
-    <section>
+    <section className="w-[90%] mx-auto h-screen">
       <div>
-        <div>
-          <h1>Ticket Selection</h1>
-          <span>step 1/3</span>
+          <div className="flex justify-between w-[90%] mx-auto items-center my-[32px] text-white">
+            <h1 className="text-[24px] md:text-[32px]">Ticket Selection</h1>
+            <span className="text-[16px]">step 1/3</span>
           </div>
-          <div className="progressbar"></div>
       </div>
+          <div className="progressbar"></div>
       <div>
-        <div>
+        <div className="bg-custom-gradient my-[32px] w-[90%] mx-auto  text-white text-center px-6 py-4 md:p-6 border border-[#07373F] rounded-[24px]">
           <div>
-            <h1>Techember Fest "25</h1>
-            <span>Join us for an unforgettable experience at [Event Name]! Secure your spot now.</span>
+            <h1 className="text-[2.5rem] md:text-[3.875rem]">Techember Fest "25</h1>
+            <span className="text-[14px]">Join us for an unforgettable experience at [Event Name]! Secure your spot now.</span>
           </div>
           <div>
-            <span>📍 [Event Location] | | March 15, 2025 | 7:00 PM</span>
+            <span className="text-[16px]">📍 [Event Location] | | March 15, 2025 | 7:00 PM</span>
           </div>
         </div>
 
-        <div className="division">
+        <div className="w-[90%] h-1 bg-[#07373F] division mx-auto">
         </div>
 
         <div>

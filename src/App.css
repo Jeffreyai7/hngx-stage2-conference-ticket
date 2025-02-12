@@ -4,4 +4,20 @@
     --selectColor: #12464E;
     --hoverColor: #2C545B;
     --lightstroke: #0E464F;
+    --bgradient:  radial-gradient(
+        103.64% 57.39% at 14.02% 32.06%,
+        rgba(36, 160, 181, 0.2) 0%,
+        rgba(36, 160, 181, 0) 100%
+      ),
+      rgba(10, 12, 17, 0.1);
 }
+
+.bg-custom-gradient {
+    background: radial-gradient(
+      103.64% 57.39% at 14.02% 32.06%,
+      rgba(36, 160, 181, 0.2) 0%,
+      rgba(36, 160, 181, 0) 100%
+    ), 
+    rgba(10, 12, 17, 0.1);
+  }
+  

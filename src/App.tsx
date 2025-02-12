@@ -6,9 +6,9 @@ import TicketSelection from './components/TicketSelection'
 function App() {
 
   return (
-    <main>
+    <main className='bg-(--primaryColor)'>
       <NavBar/>
-      {/* <TicketSelection/> */}
+      <TicketSelection/>
       {/* <AttendeeDetails/> */}
       {/* <TicketReady/> */}
     </main>

@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 const NavBar = () => {
   return (
-    <nav className="flex justify-between items-center bg-(--primaryColor) h-[68px] md:h-[76px] px-2">
+    <nav className="flex justify-between items-center bg-(--primaryColor) h-[68px] md:h-[76px] px-2 w-[90%] mx-auto">
         <div className="flex">
             <img src="/images/thumb.png" alt="logo"/>
             <img src="/images/ticz.png" alt="ticz" />
