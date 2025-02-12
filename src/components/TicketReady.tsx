@@ -1,5 +1,5 @@
 
-const TicketDownload = () => {
+const TicketReady = () => {
   return (
     <section>
       <div>
@@ -72,4 +72,4 @@ const TicketDownload = () => {
   )
 }
 
-export default TicketDownload
+export default TicketReady

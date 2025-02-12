@@ -8,9 +8,9 @@ function App() {
   return (
     <main>
       <NavBar/>
-      <TicketSelection/>
-      <AttendeeDetails/>
-      <TicketReady/>
+      {/* <TicketSelection/> */}
+      {/* <AttendeeDetails/> */}
+      {/* <TicketReady/> */}
     </main>
   )
 }
