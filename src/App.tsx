@@ -7,10 +7,12 @@ function App() {
 
   return (
     <main className='bg-(--primaryColor)'>
+      <section className='max-w-[700px] mx-auto'>
       <NavBar/>
-      <TicketSelection/>
-      {/* <AttendeeDetails/> */}
+      {/* <TicketSelection/> */}
+      <AttendeeDetails/>
       {/* <TicketReady/> */}
+      </section>
     </main>
   )
 }

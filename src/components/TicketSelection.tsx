@@ -33,7 +33,7 @@ const TicketSelection = () => {
               <div className="flex-1 h-28 border border-[#197686] rounded-[12px] p-3 flex flex-col cursor-pointer hover:bg-(--hoverColor)"><span className="text-[24px]">$150</span><span className="text-[14px]">VVIP Access</span><span className="text-[14px]">20/52</span></div>
             </div>
           </div>
-          <div className=" w-[90%] mx-auto flex flex-col">
+          <div className=" w-[90%] mx-auto flex flex-col gap-3">
             <label className="text-white flex-1" htmlFor="number of tickets">Number of Tickets</label>
             <input className="text-white flex-1 border border-[#07373F] p-3 rounded-[12px]"  type="number" name="tickets" id="number of tickets" />
           </div>
