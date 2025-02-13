@@ -8,8 +8,8 @@ const TicketReady:React.FC<{ formData: FormData }> = ({formData}) => {
 
 
   return (
-    <section>
-      <div>
+    <section className="w-[90%] mx-auto">
+      <div className="bg-(--primaryColor) z-30 sticky top-[68px]">
         <div className="flex justify-between w-[90%] mx-auto items-center my-[32px] text-white">
             <h1 className="text-[24px] md:text-[32px]">Ready</h1>
             <span className="text-[16px]">step 3/3</span>
@@ -24,7 +24,7 @@ const TicketReady:React.FC<{ formData: FormData }> = ({formData}) => {
         </div>
       {/* ticket header end */}
       {/* Main ticket start */}
-        <div className="ticket w-[90%] mx-auto">
+        <div className="ticketback w-[300px] h-[600px]">
           <div className="w-[16.25rem] p-2">
             <div className="text-center text-white">
             <h1 className="text-[1.5rem]">Techember Fest "25</h1>
@@ -62,11 +62,9 @@ const TicketReady:React.FC<{ formData: FormData }> = ({formData}) => {
             </div>
             </div>
           </div>
-          <div className="cut-line"></div>
-          {/* <div>
+          <div>
             barcode
-          </div> */}
-          <div className="bottom-corners"></div>
+          </div>
         </div>
       {/*Main ticket end */}
 

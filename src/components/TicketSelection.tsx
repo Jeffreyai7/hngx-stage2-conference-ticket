@@ -31,7 +31,7 @@ const TicketSelection: React.FC<Props> = ({register, nextStep, errors, setValue 
   
   return (
     <section className="w-[90%] mx-auto">
-      <div className="z-30 sticky top-[68px]">
+      <div className="bg-(--primaryColor) z-30 sticky top-[68px]">
           <div className="flex justify-between w-[90%] mx-auto items-center my-[32px] text-white">
             <h1 className="text-[24px] md:text-[32px]">Ticket Selection</h1>
             <span className="text-[16px]">step 1/3</span>
@@ -73,13 +73,13 @@ const TicketSelection: React.FC<Props> = ({register, nextStep, errors, setValue 
           </div>
           <div className=" w-[90%] mx-auto flex flex-col gap-3">
             <label className="text-white flex-1" htmlFor="number of tickets">Number of Tickets</label>
-            <select className="text-white flex-1 border border-[#07373F] p-3 rounded-[12px]" id="number of tickets"  {...register("step1.ticket")}>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
+            <select className="text-white w-full flex-1 border border-[#07373F] p-3 rounded-[12px]" id="number of tickets"  {...register("step1.ticket")}>
+              <option className="text-white bg-[#07373F] text-sm md:text-base" value="1">1</option>
+              <option className="text-white bg-[#07373F] text-sm md:text-base" value="2">2</option>
+              <option className="text-white bg-[#07373F] text-sm md:text-base" value="3">3</option>
+              <option className="text-white bg-[#07373F] text-sm md:text-base" value="4">4</option>
+              <option className="text-white bg-[#07373F] text-sm md:text-base" value="5">5</option>
+              <option className="text-white bg-[#07373F] text-sm md:text-base" value="6">6</option>
             </select>
             <p>{errors.step1?.ticket?.message}</p>
             {/* <input className="text-white flex-1 border border-[#07373F] p-3 rounded-[12px]"  type="number" name="tickets" id="number of tickets" /> */}

@@ -1,5 +1,7 @@
 import Button from "./Button"
-import { FormData } from "../../lib/validation";
+import { FormData as FormDatum } from "../../lib/validation";
+import { useState, useEffect, useCallback, SetStateAction } from "react";
+import { useDropzone } from "react-dropzone";
 
 
 type Props = {
@@ -8,17 +10,74 @@ type Props = {
   nextStep?: () => void;
   prevStep?: () => void;
   handleSubmit?: any;
-  onSubmit?: (data: FormData) => void;
+  onSubmit?: (data: FormDatum) => void;
+  
 };
 
 const AttendeeDetails: React.FC<Props> = ({ register, errors, prevStep }) => {
-  // const [imageUrl, setImageUrl] = useState<string>("/placeholder-image.png"); // Set custom placeholder
+  const [imageUrl, setImageUrl] = useState<string>("/placeholder-image.png"); // Set custom placeholder
 
-   
+  useEffect(() => {
+    // Load Cloudinary script
+    const script = document.createElement("script");
+    script.src = "https://upload-widget.cloudinary.com/global/all.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
+  const openUploadWidget = () => {
+    //@ts-ignore
+    window.cloudinary.openUploadWidget(
+      {
+        cloudName: "YOUR_CLOUD_NAME",
+        uploadPreset: "your_upload_preset",
+        sources: ["local", "camera"],
+        multiple: false,
+        cropping: true,
+        croppingAspectRatio: 1, // Square crop
+        maxFileSize: 2000000, // 2MB max
+        theme: "minimal",
+      },
+      (error: any, result: { event: string; info: { secure_url: SetStateAction<string>; }; }) => {
+        if (!error && result.event === "success") {
+          setImageUrl(result.info.secure_url);
+        }
+      }
+    );
+  };
+
+  const onDrop = useCallback(async (acceptedFiles: File[]) => {
+    const file = acceptedFiles[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "ybesroqu");
+
+    try {
+      const response = await fetch(
+        `https://api.cloudinary.com/v1_1/dkz10mn2q/image/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      const data = await response.json();
+      setImageUrl(data.secure_url);
+    } catch (error) {
+      console.error("Upload failed", error);
+    }
+  }, []);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: { "image/*": [] },
+    multiple: false,
+  });
 
   return (
-    <section>
-    <div>
+    <section className="w-[90%] mx-auto">
+    <div className="bg-(--primaryColor) z-30 sticky top-[68px]">
         <div className="flex justify-between w-[90%] mx-auto items-center my-[32px] text-white">
             <h1 className="text-[24px] md:text-[32px]">Attendee Details</h1>
             <span className="text-[16px]">step 2/3</span>
@@ -28,8 +87,25 @@ const AttendeeDetails: React.FC<Props> = ({ register, errors, prevStep }) => {
      <div>
         <div className="w-[90%] flex flex-col justify-center  gap-2 mx-auto bg-[#052228] border border-[#07373F] h-[328px] p-3 rounded-[12px]">
             <span className="text-white p text-[16px]">Upload Profile Photo</span>
-            <div className="grid place-content-center bg-[#000000] h-[200px]">Image upload</div>
+            <div 
+             {...getRootProps()}
+            className="grid place-content-center bg-black h-[200px]">
+               <input {...getInputProps()} />
+          {isDragActive ? (
+            <p className="text-white">Drop the image here...</p>
+          ) : (
+
+            <img
+              src={imageUrl}
+              alt="Uploaded"
+              className="h-[240px] w-[240px] object-cover cursor-pointer block border border-[#24A0B5]  rounded-[12px]"
+            />
+          )}
         </div>
+        <Button onClick={openUploadWidget} className="cursor-pointer">Upload Image</Button>
+
+      </div>
+      </div>
         <div className="w-[90%] h-1 bg-[#07373F] division mx-auto my-8"></div>
         <div>
             <div className="w-[90%] mx-auto flex flex-col gap-3">
@@ -52,11 +128,6 @@ const AttendeeDetails: React.FC<Props> = ({ register, errors, prevStep }) => {
             <Button className="flex-1 border border-(--secondaryColor) text-white bg-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer" type="submit">Get My Free Ticket</Button>
           </div>
         </div>
-     </div >
-
-
-
-
     </section>
   )
 }

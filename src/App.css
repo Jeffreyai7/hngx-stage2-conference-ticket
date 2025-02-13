@@ -30,6 +30,12 @@
     border: 1px solid cyan;
 }
 
+.ticketback {
+    width: 300px;
+    height: 600px;
+    background-image: url("/public/images/bg.png");
+
+}
 /* Cut-out circles */
 .ticket::before,
 .ticket::after {

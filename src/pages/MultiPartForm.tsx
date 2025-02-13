@@ -35,8 +35,7 @@ const MultiPartForm = () => {
     // }, [watchedData]);
   
     const onSubmit = (data: FormData) => {
-    console.log("Final Data Submitted:", data);
-    console.log("Errors:", errors);
+      console.log("Final Data Submitted:", data);
     setFormData(data);
     localStorage.removeItem("formData");
     setStep(3);
