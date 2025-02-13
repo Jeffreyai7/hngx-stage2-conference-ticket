@@ -11,7 +11,6 @@ const Button = ({
   children,
   className,
   onClick,
-  disabled,
   type,
 }: ButtonProps) => {
   return (
@@ -19,10 +18,8 @@ const Button = ({
       <button
         className={cn(
           className,
-          disabled ? "hover:shadow-0" : ""
         )}
         onClick={onClick}
-        disabled={disabled}
         type={type}
       >
         {children}

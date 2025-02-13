@@ -1,6 +1,12 @@
 import Button from "./Button"
+import {FormData} from "../../lib/validation"
 
-const TicketReady = () => {
+
+
+
+const TicketReady:React.FC<{ formData: FormData }> = ({formData}) => {
+
+
   return (
     <section>
       <div>
@@ -34,25 +40,25 @@ const TicketReady = () => {
             <div className="grid grid-cols-2 h-[88px] gap-0 w-[90%] mx-auto">
               <div className="border border-[#133D44]">
                 <p className="text-[10px] text-white opacity-[33%] p-1">Name:</p>
-                <p className="text-[12px] text-white ">{}</p>
+                <p className="text-[12px] text-white ">{formData.step2.name}</p>
               </div>
               <div className="border border-[#133D44]">
                 <p className="text-[10px]  text-white opacity-[33%] p-1">Email:</p>
-                <p className="text-[12px] text-white">{}</p>
+                <p className="text-[12px] text-white">{formData.step2.email}</p>
               </div>
               <div className="border border-[#133D44]">
                 <p className="text-[10px]  text-white opacity-[33%] p-1">Ticket Type:</p>
-                <p className="text-[12px] text-white">{}</p>
+                <p className="text-[12px] text-white">{formData.step1.ticket}</p>
               </div>
               <div className="border border-[#133D44]">
                 <p className="text-[10px]  text-white opacity-[33%] p-1">Ticket for:</p>
-                <p className="text-[12px] text-white">{}</p>
+                <p className="text-[12px] text-white">{formData.step1.ticketType}</p>
               </div>
 
             </div>
             <div className="w-[90%] mx-auto">
               <p className="text-[10px]  text-white opacity-[33%] p-1">Special Request</p>
-              <p className="text-[12px] text-white">{}</p>
+              <p className="text-[12px] text-white">{formData.step2.message}</p>
             </div>
             </div>
           </div>

@@ -1,17 +1,13 @@
 import './App.css'
-import AttendeeDetails from './components/AttendeeDetails'
 import NavBar from './components/NavBar'
-import TicketReady from './components/TicketReady'
-import TicketSelection from './components/TicketSelection'
+import MultiPartForm from './pages/MultiPartForm'
 function App() {
 
   return (
     <main className='bg-(--primaryColor)'>
       <section className=' max-w-[780px] mx-auto'>
       <NavBar/>
-      {/* <TicketSelection/> */}
-      {/* <AttendeeDetails/> */}
-      <TicketReady/>
+      <MultiPartForm/>
       </section>
     </main>
   )

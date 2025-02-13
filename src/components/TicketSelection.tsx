@@ -1,9 +1,37 @@
+import { useState } from "react";
 import Button from "./Button"
 
-const TicketSelection = () => {
+
+
+type Props = {
+  register: any;
+  errors: any;
+  nextStep?: () => void;
+  prevStep?: () => void;
+  handleSubmit?: any;
+  setValue: any; // from react-hook-form
+};
+
+
+const TicketSelection: React.FC<Props> = ({register, nextStep, errors, setValue }) => {
+
+  const [selectedTicket, setSelectedTicket] = useState<string>("");
+  
+  const handleSelectTicket = (type: string) => {
+    console.log("Selected ticket type:", type);
+    setSelectedTicket(type);
+    setValue("step1.ticketType", type); // Store in react-hook-form
+  };
+
+  const ticketOptions = [
+    { type: "Free", label: "Regular Access", price: "Free" },
+    { type: "VIP", label: "VIP Access", price: "$150" },
+    { type: "VVIP", label: "VVIP Access", price: "$150" },
+  ];
+  
   return (
     <section className="w-[90%] mx-auto">
-      <div>
+      <div className="z-30 sticky top-[68px]">
           <div className="flex justify-between w-[90%] mx-auto items-center my-[32px] text-white">
             <h1 className="text-[24px] md:text-[32px]">Ticket Selection</h1>
             <span className="text-[16px]">step 1/3</span>
@@ -28,18 +56,37 @@ const TicketSelection = () => {
           <div className="w-[90%] mx-auto my-6">
             <span className="text-white">Select Ticket Type:</span>
             <div className="flex flex-col mt-2.5 gap-6 md:flex-row text-white">
-              <div className="flex-1 h-28 border border-[#197686] rounded-[12px] p-3 flex flex-col cursor-pointer hover:bg-(--hoverColor)"><span className="text-[24px]">Free</span><span className="text-[16px]">Regular Access</span><span className="text-[14px]">20/52</span></div>
-              <div className="flex-1 h-28 border border-[#197686] rounded-[12px] p-3 flex flex-col cursor-pointer hover:bg-(--hoverColor)"><span className="text-[24px]">$150</span><span className="text-[16px]">VIP Access</span><span className="text-[14px]">20/52</span></div>
-              <div className="flex-1 h-28 border border-[#197686] rounded-[12px] p-3 flex flex-col cursor-pointer hover:bg-(--hoverColor)"><span className="text-[24px]">$150</span><span className="text-[14px]">VVIP Access</span><span className="text-[14px]">20/52</span></div>
+              {
+                ticketOptions.map((ticket) => {
+                  return (
+                    <div
+                    key={ticket.type}
+                    onClick={() => handleSelectTicket(ticket.type)}
+                    className={`${selectedTicket === ticket.type ? "bg-(--selectColor)" : "hover:bg-(--hoverColor)"} flex-1 h-28 border border-[#197686] rounded-[12px] p-3 flex flex-col cursor-pointer hover:bg-(--hoverColor)`}>
+                    <span className="text-[24px]">{ticket.price}</span><span className="text-[16px]">{ticket.label}</span><span className="text-[14px]">20/52</span></div>
+
+                  )
+                })
+
+              }
             </div>
           </div>
           <div className=" w-[90%] mx-auto flex flex-col gap-3">
             <label className="text-white flex-1" htmlFor="number of tickets">Number of Tickets</label>
-            <input className="text-white flex-1 border border-[#07373F] p-3 rounded-[12px]"  type="number" name="tickets" id="number of tickets" />
+            <select className="text-white flex-1 border border-[#07373F] p-3 rounded-[12px]" id="number of tickets"  {...register("step1.ticket")}>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+            <p>{errors.step1?.ticket?.message}</p>
+            {/* <input className="text-white flex-1 border border-[#07373F] p-3 rounded-[12px]"  type="number" name="tickets" id="number of tickets" /> */}
           </div>
           <div className="flex flex-col w-[90%] gap-3 mt-6 pb-6 mx-auto md:flex-row">
             <Button className="flex-1 border border-(--secondaryColor) text-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer">Cancel</Button>
-            <Button className="flex-1 border border-(--secondaryColor) text-white bg-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer">Next</Button>
+            <Button className="flex-1 border border-(--secondaryColor) text-white bg-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer" onClick={nextStep ? nextStep : undefined}>Next</Button>
           </div>
 
         </div>
