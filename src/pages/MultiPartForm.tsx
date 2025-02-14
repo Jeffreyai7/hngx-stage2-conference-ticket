@@ -8,7 +8,7 @@ import TicketSelection from "../components/TicketSelection";
 import { schema, FormData } from "../../lib/validation";
 
 const MultiPartForm = () => {
-  const [imageUrl, setImageUrl] = useState<string>("/placeholder-image.png"); // Set custom placeholder
+  const [imageUrl, setImageUrl] = useState<string>(""); // Set custom placeholder
 
   const [step, setStep] = useState<number>(1);
   const [formData, setFormData] = useState<FormData>(() => {
@@ -63,7 +63,6 @@ const MultiPartForm = () => {
             register={register}
             errors={errors}
             prevStep={prevStep}
-            nextStep={nextStep}
             imageUrl={imageUrl}
             setImageUrl={setImageUrl}
           />

@@ -96,25 +96,45 @@ const AttendeeDetails: React.FC<Props> = ({
       </div>
       <div>
         <div className="w-[90%] flex flex-col justify-center roboto-text  gap-2 mx-auto bg-[#052228] border border-[#07373F] h-[328px] p-3 rounded-[12px]">
-          <span className="text-white p text-[16px]">Upload Profile Photo</span>
+          <span className="text-white mb-3 text-[16px]">
+            Upload Profile Photo
+          </span>
           <div
             {...getRootProps()}
-            className="grid place-content-center bg-black h-[200px]"
+            className="grid place-content-center  h-[200px]"
           >
             <input {...getInputProps()} />
             {isDragActive ? (
               <p className="text-white">Drop the image here...</p>
             ) : (
-              <img
-                src={imageUrl}
-                alt="Uploaded"
-                className="h-[240px] w-[240px] object-cover cursor-pointer block border border-[#24A0B5]  rounded-[12px]"
-              />
+              <div
+                className={`h-[240px] w-[240px] text-center justify-center cursor-pointer block border border-[#24A0B5]  rounded-[12px]`}
+              >
+                {imageUrl ? (
+                  <img
+                    className="w-full h-full"
+                    src={imageUrl}
+                    alt="Uploaded"
+                  />
+                ) : (
+                  <div className=" w-[50%] mx-auto h-full grid place-content-center text-center items-center">
+                    <p className="text-white">
+                      {" "}
+                      Drag and drop or click to upload
+                      <img
+                        className="w-10 h-10 block "
+                        src="images/icon.png"
+                        alt="Uploaded"
+                      />
+                    </p>
+                  </div>
+                )}
+              </div>
             )}
           </div>
-          <Button onClick={openUploadWidget} className="cursor-pointer">
+          {/* <Button onClick={openUploadWidget} className="cursor-pointer">
             Upload Image
-          </Button>
+          </Button> */}
         </div>
       </div>
       <div className="w-[90%] h-1 bg-[#07373F] roboto-text division mx-auto my-8"></div>
@@ -129,7 +149,7 @@ const AttendeeDetails: React.FC<Props> = ({
             id="name"
             {...register("step2.name")}
           />
-          <p>{errors.step2?.name?.message}</p>
+          <p className="text-red-700">{errors.step2?.name?.message}</p>
         </div>
         <div className="w-[90%] mx-auto flex flex-col gap-3">
           <label className="text-white flex-1" htmlFor="email">
@@ -141,7 +161,7 @@ const AttendeeDetails: React.FC<Props> = ({
             id="email"
             {...register("step2.email")}
           />
-          <p>{errors.step2?.email?.message}</p>
+          <p className="text-red-700">{errors.step2?.email?.message}</p>
         </div>
         <div className="w-[90%] mx-auto flex flex-col gap-3">
           <label className="text-white flex-1" htmlFor="textarea">
@@ -153,7 +173,7 @@ const AttendeeDetails: React.FC<Props> = ({
             placeholder="Textarea"
             {...register("step2.message")}
           ></textarea>
-          <p>{errors.step2?.message?.message}</p>
+          <p className="text-red-700">{errors.step2?.message?.message}</p>
         </div>
         <div className="flex flex-col w-[90%] gap-3 mt-6 pb-6 mx-auto md:flex-row">
           <Button

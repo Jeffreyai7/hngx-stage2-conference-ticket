@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import MultiPartForm from "./pages/MultiPartForm";
 import MyTickets from "./pages/MyTickets";
 import AboutProject from "./pages/AboutProject";
+import Home from "./pages/Home";
 function App() {
   return (
     <main className="bg-(--primaryColor)">
@@ -11,7 +12,8 @@ function App() {
         <Router>
           <NavBar />
           <Routes>
-            <Route path="/" element={<MultiPartForm />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/form" element={<MultiPartForm />} />
             <Route path="/mytickets" element={<MyTickets />} />
             <Route path="/about-project" element={<AboutProject />} />
           </Routes>

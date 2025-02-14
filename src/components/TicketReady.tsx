@@ -42,8 +42,12 @@ const TicketReady: React.FC<Props> = ({ formData, imageUrl }) => {
                 <span>📅 March 15, 2025 | 7:00 PM</span>
               </div>
             </div>
-            <div className="h-[140px] w-[140px]">
-              <img src={imageUrl} alt="avatar" />
+            <div className="flex justify-center items-center my-1.5">
+              <img
+                className="h-[140px] w-[140px] "
+                src={imageUrl}
+                alt="avatar"
+              />
             </div>
             <div className="border border-[#133D44] h-[160px]">
               <div className="grid grid-cols-2 h-[88px] gap-0 w-full p">
@@ -100,7 +104,10 @@ const TicketReady: React.FC<Props> = ({ formData, imageUrl }) => {
         <div className="flex flex-col w-[90%] gap-3 mt-6 pb-6 mx-auto md:flex-row">
           <Button
             className="jeju-text flex-1 border border-(--secondaryColor) text-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer"
-            onClick={() => navigate("/")}
+            onClick={() => {
+              console.log("Navigating to /");
+              navigate("/");
+            }}
           >
             Book Another Ticket
           </Button>

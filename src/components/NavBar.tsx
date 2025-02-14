@@ -9,7 +9,9 @@ const NavBar = () => {
     <nav className="flex justify-between items-center bg-(--primaryColor) h-[68px] md:h-[76px] px-2 w-[90%] max-w-[800px] mx-auto sticky top-0 z-30">
       <div className="flex">
         <img src="/images/thumb.png" alt="logo" />
-        <img src="/images/ticz.png" alt="ticz" />
+        <Link to={"/"}>
+          <img className="cursor-pointer" src="/images/ticz.png" alt="ticz" />
+        </Link>
       </div>
       <div className="hidden md:flex justify-between items-center gap-4 text-[#B3B3B3] jeju-text transition-all ">
         {links.map((link, index) => {
