@@ -1,6 +1,6 @@
 const AboutProject = () => {
   return (
-    <section className="w-[90%] flex flex-col gap-3 h-full mx-auto bg-(--primaryColor) text-white">
+    <section className="w-[90%] max-w-[700px] flex flex-col gap-3 h-full mx-auto bg-(--primaryColor) py-3 text-white">
       <p>Event Ticket Booking UI – Open Source Practice Project 🎟️</p>
       <p>Overview</p>
       <p>

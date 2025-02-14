@@ -7,13 +7,13 @@ import AboutProject from "./pages/AboutProject";
 function App() {
   return (
     <main className="bg-(--primaryColor)">
-      <div className="w-[90%] max-w-1024 mx-auto ">
+      <div className="w-[90%] max-w-700px mx-auto ">
         <Router>
           <NavBar />
           <Routes>
             <Route path="/" element={<MultiPartForm />} />
             <Route path="/mytickets" element={<MyTickets />} />
-            <Route path="/contact" element={<AboutProject />} />
+            <Route path="/about-project" element={<AboutProject />} />
           </Routes>
         </Router>
       </div>

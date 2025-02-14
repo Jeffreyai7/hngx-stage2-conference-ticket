@@ -11,7 +11,7 @@ type Props = {
 const TicketReady: React.FC<Props> = ({ formData, imageUrl }) => {
   const navigate = useNavigate();
   return (
-    <section className="w-[90%] mx-auto">
+    <section className="w-[90%] max-w-[600px] mx-auto">
       <div className="bg-(--primaryColor) z-30 sticky top-[68px] mb-[32px]">
         <div className="flex justify-between w-[90%] mx-auto items-center  text-white">
           <h1 className="text-[24px] md:text-[32px] jeju-text">Ready</h1>

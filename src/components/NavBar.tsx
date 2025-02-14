@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 const NavBar = () => {
   const location = useLocation();
   return (
-    <nav className="flex justify-between items-center bg-(--primaryColor) h-[68px] md:h-[76px] px-2 w-[90%] mx-auto sticky top-0 z-30">
+    <nav className="flex justify-between items-center bg-(--primaryColor) h-[68px] md:h-[76px] px-2 w-[90%] max-w-[800px] mx-auto sticky top-0 z-30">
       <div className="flex">
         <img src="/images/thumb.png" alt="logo" />
         <img src="/images/ticz.png" alt="ticz" />
