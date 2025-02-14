@@ -1,6 +1,6 @@
 import Button from "./Button"
 import { FormData as FormDatum } from "../../lib/validation";
-import { useState, useEffect, useCallback, SetStateAction } from "react";
+import { useEffect, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 
 
