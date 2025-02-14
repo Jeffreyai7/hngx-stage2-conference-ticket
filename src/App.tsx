@@ -1,17 +1,24 @@
-import { RouterProvider } from "react-router-dom";
-import './App.css'
-import NavBar from './components/NavBar'
-import { router } from "./services/routes";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import NavBar from "./components/NavBar";
+import MultiPartForm from "./pages/MultiPartForm";
+import MyTickets from "./pages/MyTickets";
+import AboutProject from "./pages/AboutProject";
 function App() {
-
   return (
-    <main className='bg-(--primaryColor)'>
-      <section className=' max-w-[780px] mx-auto'>
-      <NavBar/>
-      <RouterProvider router={router} />
-      </section>
+    <main className="bg-(--primaryColor)">
+      <div className="w-[90%] max-w-1024 mx-auto ">
+        <Router>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<MultiPartForm />} />
+            <Route path="/mytickets" element={<MyTickets />} />
+            <Route path="/contact" element={<AboutProject />} />
+          </Routes>
+        </Router>
+      </div>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;
