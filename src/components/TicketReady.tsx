@@ -1,10 +1,13 @@
 import Button from "./Button"
 import {FormData} from "../../lib/validation"
 
+type Props = {
+  formData: FormData,
+  imageUrl: string
+}
 
 
-
-const TicketReady:React.FC<{ formData: FormData }> = ({formData}) => {
+const TicketReady:React.FC<Props> = ({formData, imageUrl}) => {
 
 
   return (
@@ -16,7 +19,7 @@ const TicketReady:React.FC<{ formData: FormData }> = ({formData}) => {
         </div>
     </div>
           <div className="progressbar"></div>
-      <div>
+      <div className="flex flex-col justify-center items-center">
       {/* ticket header */}
         <div className="text-white text-center w-[90%] mb-3 mx-auto">
         <h2 className="text-[32px]">Your Ticket is Booked!</h2>
@@ -24,8 +27,8 @@ const TicketReady:React.FC<{ formData: FormData }> = ({formData}) => {
         </div>
       {/* ticket header end */}
       {/* Main ticket start */}
-        <div className="ticketback w-[300px] h-[600px]">
-          <div className="w-[16.25rem] p-2">
+        <div className="ticketback flex flex-col justify-center items-center gap-2 w-[300px] h-[600px]">
+          <div className="w-[16.25rem] h-[27.8rem] p-2 border-2 border-[#133D44] rounded-[16px]">
             <div className="text-center text-white">
             <h1 className="text-[1.5rem]">Techember Fest "25</h1>
             <div className="text-[0.625rem]">
@@ -34,36 +37,36 @@ const TicketReady:React.FC<{ formData: FormData }> = ({formData}) => {
             </div>
             </div>
             <div className="h-[140px] w-[140px]">
-              image
+              <img src={imageUrl} alt="avatar" />
             </div>
-            <div className="border border-[#133D44]">
-            <div className="grid grid-cols-2 h-[88px] gap-0 w-[90%] mx-auto">
+            <div className="border border-[#133D44] h-[160px]">
+            <div className="grid grid-cols-2 h-[88px] gap-0 w-full p">
               <div className="border border-[#133D44]">
                 <p className="text-[10px] text-white opacity-[33%] p-1">Name:</p>
-                <p className="text-[12px] text-white ">{formData.step2.name}</p>
+                <p className="text-[12px] text-white p-1">{formData.step2.name}</p>
               </div>
               <div className="border border-[#133D44]">
                 <p className="text-[10px]  text-white opacity-[33%] p-1">Email:</p>
-                <p className="text-[12px] text-white">{formData.step2.email}</p>
+                <p className="text-[12px] text-white p-1">{formData.step2.email}</p>
               </div>
               <div className="border border-[#133D44]">
                 <p className="text-[10px]  text-white opacity-[33%] p-1">Ticket Type:</p>
-                <p className="text-[12px] text-white">{formData.step1.ticket}</p>
+                <p className="text-[10px] text-white p-1">{formData.step1.ticket}</p>
               </div>
               <div className="border border-[#133D44]">
                 <p className="text-[10px]  text-white opacity-[33%] p-1">Ticket for:</p>
-                <p className="text-[12px] text-white">{formData.step1.ticketType}</p>
+                <p className="text-[10px] text-white p-1">{formData.step1.ticketType}</p>
               </div>
 
             </div>
             <div className="w-[90%] mx-auto">
               <p className="text-[10px]  text-white opacity-[33%] p-1">Special Request</p>
-              <p className="text-[12px] text-white">{formData.step2.message}</p>
+              <p className="text-[12px] text-white p-1">{formData.step2.message}</p>
             </div>
             </div>
           </div>
           <div>
-            barcode
+            <img src="images/Group.png" alt="barcode" />
           </div>
         </div>
       {/*Main ticket end */}

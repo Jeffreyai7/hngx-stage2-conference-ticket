@@ -11,11 +11,13 @@ type Props = {
   prevStep?: () => void;
   handleSubmit?: any;
   onSubmit?: (data: FormDatum) => void;
+  setImageUrl:(data:string) => void;
+  imageUrl: string
   
 };
 
-const AttendeeDetails: React.FC<Props> = ({ register, errors, prevStep }) => {
-  const [imageUrl, setImageUrl] = useState<string>("/placeholder-image.png"); // Set custom placeholder
+const AttendeeDetails: React.FC<Props> = ({ register, errors, prevStep, imageUrl, setImageUrl }) => {
+  // const [imageUrl, setImageUrl] = useState<string>("/placeholder-image.png"); // Set custom placeholder
 
   useEffect(() => {
     // Load Cloudinary script
@@ -38,7 +40,7 @@ const AttendeeDetails: React.FC<Props> = ({ register, errors, prevStep }) => {
         maxFileSize: 2000000, // 2MB max
         theme: "minimal",
       },
-      (error: any, result: { event: string; info: { secure_url: SetStateAction<string>; }; }) => {
+      (error: any, result: { event: string; info: { secure_url: string; }; }) => {
         if (!error && result.event === "success") {
           setImageUrl(result.info.secure_url);
         }

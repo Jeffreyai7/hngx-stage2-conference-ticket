@@ -8,6 +8,7 @@ import TicketSelection from '../components/TicketSelection'
 import {schema, FormData} from "../../lib/validation"
 
 const MultiPartForm = () => {
+  const [imageUrl, setImageUrl] = useState<string>("/placeholder-image.png"); // Set custom placeholder
   
   const [step, setStep] = useState<number>(1);
   const [formData, setFormData] = useState<FormData>(() => {
@@ -50,8 +51,9 @@ const MultiPartForm = () => {
     >
       <form onSubmit={handleSubmit(onSubmit)}>
       {step === 1 && <TicketSelection register={register} errors={errors} nextStep={nextStep} setValue={setValue} />}
-      {step === 2 && <AttendeeDetails register={register} errors={errors} prevStep={prevStep} nextStep={nextStep} />}
-      {step === 3 && <TicketReady formData={formData} />}
+      {step === 2 && <AttendeeDetails register={register} errors={errors} prevStep={prevStep} nextStep={nextStep} imageUrl={imageUrl} setImageUrl={setImageUrl} />}
+      {step === 3 && <TicketReady formData={formData} imageUrl={imageUrl} />}
+      {/* {<TicketReady formData={formData} imageUrl={imageUrl} />} */}
     </form>
     </motion.div>
   )
