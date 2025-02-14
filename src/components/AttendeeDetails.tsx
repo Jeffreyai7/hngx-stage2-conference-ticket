@@ -79,13 +79,15 @@ const AttendeeDetails: React.FC<Props> = ({ register, errors, prevStep, imageUrl
 
   return (
     <section className="w-[90%] mx-auto">
-    <div className="bg-(--primaryColor) z-30 sticky top-[68px]">
-        <div className="flex justify-between w-[90%] mx-auto items-center my-[32px] text-white">
+    <div className="bg-(--primaryColor) z-30 sticky top-[68px] my-[32px] mb-[32px]">
+        <div className="flex justify-between w-[90%] mx-auto items-center  text-white">
             <h1 className="text-[24px] md:text-[32px]">Attendee Details</h1>
             <span className="text-[16px]">step 2/3</span>
         </div>
+    <div className="progress-container">
+        <div className="progress-bar2"></div>
     </div>
-     <div className="progressbar"></div>
+    </div>
      <div>
         <div className="w-[90%] flex flex-col justify-center  gap-2 mx-auto bg-[#052228] border border-[#07373F] h-[328px] p-3 rounded-[12px]">
             <span className="text-white p text-[16px]">Upload Profile Photo</span>

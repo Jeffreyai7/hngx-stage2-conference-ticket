@@ -1,25 +1,27 @@
 import Button from "./Button"
 import {FormData} from "../../lib/validation"
 
-
 type Props = {
   formData: FormData,
-  imageUrl: string
+  imageUrl: string,
+  nextStep: () => void
 }
 
 
-const TicketReady:React.FC<Props> = ({formData, imageUrl}) => {
+const TicketReady:React.FC<Props> = ({formData, imageUrl, nextStep}) => {
 
 
   return (
     <section className="w-[90%] mx-auto">
-      <div className="bg-(--primaryColor) z-30 sticky top-[68px]">
-        <div className="flex justify-between w-[90%] mx-auto items-center my-[32px] text-white">
+      <div className="bg-(--primaryColor) z-30 sticky top-[68px] mb-[32px]">
+        <div className="flex justify-between w-[90%] mx-auto items-center  text-white">
             <h1 className="text-[24px] md:text-[32px]">Ready</h1>
             <span className="text-[16px]">step 3/3</span>
         </div>
+      <div className="progress-container">
+          <div className="progress-bar3"></div>
+      </div>
     </div>
-          <div className="progressbar"></div>
       <div className="flex flex-col justify-center items-center">
       {/* ticket header */}
         <div className="text-white text-center w-[90%] mb-3 mx-auto">
@@ -74,7 +76,7 @@ const TicketReady:React.FC<Props> = ({formData, imageUrl}) => {
 
         {/* button start */}
         <div className="flex flex-col w-[90%] gap-3 mt-6 pb-6 mx-auto md:flex-row">
-            <Button className="flex-1 border border-(--secondaryColor) text-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer">Book Another Ticket</Button>
+            <Button className="flex-1 border border-(--secondaryColor) text-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer" onClick={nextStep}>Book Another Ticket</Button>
             <Button className="flex-1 border border-(--secondaryColor) text-white bg-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer">Download Ticket</Button>
           </div>
         {/* button end */}

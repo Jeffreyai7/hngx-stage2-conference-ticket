@@ -22,18 +22,19 @@ const MultiPartForm = () => {
       register,
       handleSubmit,
       formState: { errors },
-      setValue
+      setValue,
+      watch
     } = useForm({
       resolver: zodResolver(schema),
       defaultValues: formData,
     });
     
-    // const watchedData = watch();
+    const watchedData = watch();
 
-    // useEffect(() => {
-    //   setFormData(watchedData as FormData);
-    //   localStorage.setItem("formData", JSON.stringify(watchedData));
-    // }, [watchedData]);
+    useEffect(() => {
+      setFormData(watchedData as FormData);
+      localStorage.setItem("formData", JSON.stringify(watchedData));
+    }, []);
   
     const onSubmit = (data: FormData) => {
       console.log("Final Data Submitted:", data);
@@ -52,7 +53,7 @@ const MultiPartForm = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
       {step === 1 && <TicketSelection register={register} errors={errors} nextStep={nextStep} setValue={setValue} />}
       {step === 2 && <AttendeeDetails register={register} errors={errors} prevStep={prevStep} nextStep={nextStep} imageUrl={imageUrl} setImageUrl={setImageUrl} />}
-      {step === 3 && <TicketReady formData={formData} imageUrl={imageUrl} />}
+      {step === 3 && <TicketReady formData={formData} imageUrl={imageUrl} nextStep={nextStep}  />}
       {/* {<TicketReady formData={formData} imageUrl={imageUrl} />} */}
     </form>
     </motion.div>

@@ -21,66 +21,39 @@
     rgba(10, 12, 17, 0.1);
   }
   
-  .ticket {
-    width: 300px;
-    height: 600px;
-    background: radial-gradient(circle at 50% 10%, rgba(36, 160, 181, 0.3), #041E23);
-    border-radius: 20px;
-    position: relative;
-    border: 1px solid cyan;
-}
-
 .ticketback {
     width: 300px;
     height: 600px;
     background-image: url("/public/images/bg.png");
 
 }
-/* Cut-out circles */
-.ticket::before,
-.ticket::after {
-    content: "";
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: #0E2A2F;
-    border-radius: 50%;
-    left: 50%;
-    transform: translateX(-50%);
+
+.progress-container {
+    width: 90%;
+    background-color: var(--lightstroke);
+    border-radius: 5px;
+    height: 4px;
+    margin: auto;
+    overflow: hidden;
 }
 
-.ticket::before {
-    top: -15px;
+.progress-bar1 {
+    width: 25%; /* Change this to update progress */
+    height: 100%;
+    background-color: var(--secondaryColor);
+    transition: width 0.4s ease-in-out;
 }
 
-.ticket::after {
-    bottom: -15px;
+.progress-bar2 {
+    width: 50%; /* Change this to update progress */
+    height: 100%;
+    background-color: var(--secondaryColor);
+    transition: width 0.4s ease-in-out;
 }
 
-/* Dotted cut line */
-.cut-line {
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    border-top: 4px dashed #0E464F ;
-    top: 70%;
-}
-
-/* Bottom rounded corners */
-.ticket .bottom-corners {
-    position: absolute;
-    width: 100%;
-    height: 30px;
-    bottom: 0;
-    display: flex;
-    justify-content: space-between;
-}
-
-.bottom-corners::before,
-.bottom-corners::after {
-    content: "";
-    width: 20px;
-    height: 20px;
-    background-color: #0E2A2F;
-    border-radius: 50%;
+.progress-bar3 {
+    width: 85%; /* Change this to update progress */
+    height: 100%;
+    background-color: var(--secondaryColor);
+    transition: width 0.4s ease-in-out;
 }

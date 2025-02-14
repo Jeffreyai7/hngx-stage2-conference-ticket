@@ -31,13 +31,15 @@ const TicketSelection: React.FC<Props> = ({register, nextStep, errors, setValue 
   
   return (
     <section className="w-[90%] mx-auto">
-      <div className="bg-(--primaryColor) z-30 sticky top-[68px]">
-          <div className="flex justify-between w-[90%] mx-auto items-center my-[32px] text-white">
+      <div className="bg-(--primaryColor) z-30 sticky top-[68px] mb-[32px]">
+          <div className="flex justify-between w-[90%] mx-auto items-center  text-white">
             <h1 className="text-[24px] md:text-[32px]">Ticket Selection</h1>
             <span className="text-[16px]">step 1/3</span>
           </div>
+      <div className="progress-container">
+        <div className="progress-bar1"></div>
+    </div>
       </div>
-          <div className="progressbar"></div>
       <div>
         <div className="bg-custom-gradient my-[32px] w-[90%] mx-auto  text-white text-center px-6 py-4 md:p-6 border border-[#07373F] rounded-[24px]">
           <div>
