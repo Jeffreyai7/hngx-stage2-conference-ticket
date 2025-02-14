@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 const NavBar = () => {
   const location = useLocation();
   return (
-    <nav className="flex justify-between items-center bg-(--primaryColor) h-[68px] md:h-[76px] px-2 w-[90%] max-w-[800px] mx-auto sticky top-0 z-30">
+    <nav className="flex justify-between items-center bg-(--primaryColor) h-[68px] md:h-[76px] px-2 w-[95%] max-w-[800px] mx-auto sticky top-0 z-30">
       <div className="flex">
         <img src="/images/thumb.png" alt="logo" />
         <Link to={"/"}>
@@ -29,7 +29,7 @@ const NavBar = () => {
       </div>
       <div>
         <Button className="bg-white text-[14px] flex items-center px-[1em] py-[0.75em] rounded-[10px] text-[#0A0C11] jeju-text hover:bg-(--secondaryColor) hover:text-white cursor-pointer transition-colors">
-          MY TICKET <ArrowRight size={24} />
+          MY TICKET <ArrowRight className=" hover:rotate-x-45" size={24} />
         </Button>
       </div>
     </nav>

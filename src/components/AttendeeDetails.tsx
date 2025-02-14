@@ -60,7 +60,7 @@ const AttendeeDetails: React.FC<Props> = ({
   });
 
   return (
-    <section className="w-[90%] max-w-[600px] mb-2 mx-auto">
+    <section className="w-[95%] max-w-[600px] mb-2 mx-auto">
       <div className="bg-(--primaryColor) z-30 sticky top-[68px] my-[32px] mb-[32px]">
         <div className="flex justify-between w-[90%] mx-auto items-center  text-white">
           <h1 className="text-[24px] md:text-[32px] jeju-text">
@@ -87,7 +87,7 @@ const AttendeeDetails: React.FC<Props> = ({
                 <p className="text-white">Drop the image here...</p>
               ) : (
                 <div
-                  className={`h-[240px] w-[240px] bg-[#0E464F] text-center justify-center cursor-pointer block border border-[#24A0B5]  rounded-[12px]`}
+                  className={`h-[240px] w-[240px] bg-[#0E464F] hover:opacity-80 text-center justify-center cursor-pointer block border border-[#24A0B5]  rounded-[12px]`}
                 >
                   {imageUrl ? (
                     <img
