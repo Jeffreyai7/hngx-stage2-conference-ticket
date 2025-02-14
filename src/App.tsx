@@ -7,7 +7,7 @@ import AboutProject from "./pages/AboutProject";
 import Home from "./pages/Home";
 function App() {
   return (
-    <main className="bg-(--primaryColor)">
+    <main className="bg-(--primaryColor) pb-3">
       <div className="w-[90%] max-w-700px mx-auto ">
         <Router>
           <NavBar />

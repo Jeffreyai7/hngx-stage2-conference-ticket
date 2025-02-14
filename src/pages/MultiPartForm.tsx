@@ -43,6 +43,7 @@ const MultiPartForm = () => {
     formState: { errors },
     setValue,
     watch,
+    reset,
   } = useForm({
     resolver: zodResolver(schema),
     defaultValues: formData,
@@ -51,8 +52,9 @@ const MultiPartForm = () => {
   const watchedData = watch();
 
   useEffect(() => {
-    setFormData(watchedData as FormData);
-    localStorage.setItem("formData", JSON.stringify(watchedData));
+    if (watchedData) {
+      localStorage.setItem("formData", JSON.stringify(watchedData));
+    }
   }, [watchedData]);
 
   const onSubmit = (data: FormData) => {
@@ -60,6 +62,7 @@ const MultiPartForm = () => {
     setFormData(data);
     localStorage.removeItem("formData");
     localStorage.removeItem("currentStep");
+    reset({});
     setStep(3);
   };
 
