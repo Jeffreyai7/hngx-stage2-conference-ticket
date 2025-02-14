@@ -1,6 +1,7 @@
 import Button from "./Button"
 import {FormData} from "../../lib/validation"
 
+
 type Props = {
   formData: FormData,
   imageUrl: string
@@ -73,8 +74,8 @@ const TicketReady:React.FC<Props> = ({formData, imageUrl}) => {
 
         {/* button start */}
         <div className="flex flex-col w-[90%] gap-3 mt-6 pb-6 mx-auto md:flex-row">
-            <Button className="flex-1 border border-(--secondaryColor) text-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer">Back</Button>
-            <Button className="flex-1 border border-(--secondaryColor) text-white bg-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer">Get My Free Ticket</Button>
+            <Button className="flex-1 border border-(--secondaryColor) text-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer">Book Another Ticket</Button>
+            <Button className="flex-1 border border-(--secondaryColor) text-white bg-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer">Download Ticket</Button>
           </div>
         {/* button end */}
       </div>
