@@ -8,15 +8,34 @@ import TicketSelection from "../components/TicketSelection";
 import { schema, FormData } from "../../lib/validation";
 
 const MultiPartForm = () => {
-  const [imageUrl, setImageUrl] = useState<string>(""); // Set custom placeholder
+  // This is state for the image upload
+  const [imageUrl, setImageUrl] = useState<string>("");
 
-  const [step, setStep] = useState<number>(1);
+  // State for the steps in the multipart form
+  const [step, setStep] = useState<number>(() => {
+    return Number(localStorage.getItem("currentStep")) || 1;
+  });
+
+  // State for the form inputs
   const [formData, setFormData] = useState<FormData>(() => {
     return JSON.parse(localStorage.getItem("formData") || "{}") as FormData;
   });
 
-  const nextStep = () => setStep(step + 1);
-  const prevStep = () => setStep(step - 1);
+  const nextStep = () => {
+    setStep((prev) => {
+      const newStep = prev + 1;
+      localStorage.setItem("currentStep", newStep.toString()); // Here the states persist per step
+      return newStep;
+    });
+  };
+
+  const prevStep = () => {
+    setStep((prev) => {
+      const newStep = prev - 1;
+      localStorage.setItem("currentStep", newStep.toString()); // Also when you go back
+      return newStep;
+    });
+  };
 
   const {
     register,
@@ -34,12 +53,13 @@ const MultiPartForm = () => {
   useEffect(() => {
     setFormData(watchedData as FormData);
     localStorage.setItem("formData", JSON.stringify(watchedData));
-  }, []);
+  }, [watchedData]);
 
   const onSubmit = (data: FormData) => {
     console.log("Final Data Submitted:", data);
     setFormData(data);
     localStorage.removeItem("formData");
+    localStorage.removeItem("currentStep");
     setStep(3);
   };
 

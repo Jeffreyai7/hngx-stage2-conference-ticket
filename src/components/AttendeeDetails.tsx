@@ -31,26 +31,26 @@ const AttendeeDetails: React.FC<Props> = ({
     document.body.appendChild(script);
   }, []);
 
-  const openUploadWidget = () => {
-    //@ts-ignore
-    window.cloudinary.openUploadWidget(
-      {
-        cloudName: "YOUR_CLOUD_NAME",
-        uploadPreset: "your_upload_preset",
-        sources: ["local", "camera"],
-        multiple: false,
-        cropping: true,
-        croppingAspectRatio: 1, // Square crop
-        maxFileSize: 2000000, // 2MB max
-        theme: "minimal",
-      },
-      (error: any, result: { event: string; info: { secure_url: string } }) => {
-        if (!error && result.event === "success") {
-          setImageUrl(result.info.secure_url);
-        }
-      }
-    );
-  };
+  // const openUploadWidget = () => {
+  //   //@ts-ignore
+  //   window.cloudinary.openUploadWidget(
+  //     {
+  //       cloudName: "YOUR_CLOUD_NAME",
+  //       uploadPreset: "your_upload_preset",
+  //       sources: ["local", "camera"],
+  //       multiple: false,
+  //       cropping: true,
+  //       croppingAspectRatio: 1, // Square crop
+  //       maxFileSize: 2000000, // 2MB max
+  //       theme: "minimal",
+  //     },
+  //     (error: any, result: { event: string; info: { secure_url: string } }) => {
+  //       if (!error && result.event === "success") {
+  //         setImageUrl(result.info.secure_url);
+  //       }
+  //     }
+  //   );
+  // };
 
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
