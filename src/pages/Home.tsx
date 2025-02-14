@@ -6,7 +6,7 @@ const Home = () => {
 
   return (
     <div className="h-screen bg-(--primaryColor) flex flex-col justify-center items-center">
-      <div className="bg-custom-gradient my-[32px] w-[90%] mx-auto  text-white text-center px-6 py-4 md:p-6 border border-[#07373F] rounded-[24px]">
+      <div className="bg-custom-gradient my-[32px] w-[95%] max-w-[800px] mx-auto  text-white text-center px-6 py-4 md:p-6 border border-[#07373F] rounded-[24px]">
         <div>
           <h1 className="text-[2.5rem] md:text-[3.875rem] road-rage-text">
             Techember Fest "25
