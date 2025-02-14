@@ -15,8 +15,8 @@ const TicketReady:React.FC<Props> = ({formData, imageUrl, nextStep}) => {
     <section className="w-[90%] mx-auto">
       <div className="bg-(--primaryColor) z-30 sticky top-[68px] mb-[32px]">
         <div className="flex justify-between w-[90%] mx-auto items-center  text-white">
-            <h1 className="text-[24px] md:text-[32px]">Ready</h1>
-            <span className="text-[16px]">step 3/3</span>
+            <h1 className="text-[24px] md:text-[32px] jeju-text">Ready</h1>
+            <span className=" roboto-text text-[16px]">step 3/3</span>
         </div>
       <div className="progress-container">
           <div className="progress-bar3"></div>
@@ -33,8 +33,8 @@ const TicketReady:React.FC<Props> = ({formData, imageUrl, nextStep}) => {
         <div className="ticketback flex flex-col justify-center items-center gap-2 w-[300px] h-[600px]">
           <div className="w-[16.25rem] h-[27.8rem] p-2 border-2 border-[#133D44] rounded-[16px]">
             <div className="text-center text-white">
-            <h1 className="text-[1.5rem]">Techember Fest "25</h1>
-            <div className="text-[0.625rem]">
+            <h1 className="text-[1.5rem] road-rage-text">Techember Fest "25</h1>
+            <div className="text-[0.625rem] roboto-text">
             <span>📍 04 Rumens road, Ikoyi, Lagos</span>
             <span>📅 March 15, 2025 | 7:00 PM</span>
             </div>
@@ -76,8 +76,8 @@ const TicketReady:React.FC<Props> = ({formData, imageUrl, nextStep}) => {
 
         {/* button start */}
         <div className="flex flex-col w-[90%] gap-3 mt-6 pb-6 mx-auto md:flex-row">
-            <Button className="flex-1 border border-(--secondaryColor) text-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer" onClick={nextStep}>Book Another Ticket</Button>
-            <Button className="flex-1 border border-(--secondaryColor) text-white bg-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer">Download Ticket</Button>
+            <Button className="jeju-text flex-1 border border-(--secondaryColor) text-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer" onClick={nextStep}>Book Another Ticket</Button>
+            <Button className="jeju-text flex-1 border border-(--secondaryColor) text-white bg-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer">Download Ticket</Button>
           </div>
         {/* button end */}
       </div>

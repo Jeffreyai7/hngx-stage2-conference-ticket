@@ -1,3 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Road+Rage&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Alatsi&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Jeju+Myeongjo&display=swap');
+
+.jeju-text {
+    font-family: 'Jeju Myeongjo', serif;
+}
+
+.alatsi-text {
+    font-family: 'Alatsi', sans-serif;
+}
+
+.roboto-text {
+    font-family: 'Roboto', sans-serif;
+}
+
+.road-rage-text {
+    font-family: 'Road Rage', cursive;
+}
+
+
 :root {
     --primaryColor: #041E23;
     --secondaryColor: #24A0B5;

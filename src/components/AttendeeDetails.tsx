@@ -81,15 +81,15 @@ const AttendeeDetails: React.FC<Props> = ({ register, errors, prevStep, imageUrl
     <section className="w-[90%] mx-auto">
     <div className="bg-(--primaryColor) z-30 sticky top-[68px] my-[32px] mb-[32px]">
         <div className="flex justify-between w-[90%] mx-auto items-center  text-white">
-            <h1 className="text-[24px] md:text-[32px]">Attendee Details</h1>
-            <span className="text-[16px]">step 2/3</span>
+            <h1 className="text-[24px] md:text-[32px] jeju-text">Attendee Details</h1>
+            <span className="text-[16px] roboto-text">step 2/3</span>
         </div>
     <div className="progress-container">
         <div className="progress-bar2"></div>
     </div>
     </div>
      <div>
-        <div className="w-[90%] flex flex-col justify-center  gap-2 mx-auto bg-[#052228] border border-[#07373F] h-[328px] p-3 rounded-[12px]">
+        <div className="w-[90%] flex flex-col justify-center roboto-text  gap-2 mx-auto bg-[#052228] border border-[#07373F] h-[328px] p-3 rounded-[12px]">
             <span className="text-white p text-[16px]">Upload Profile Photo</span>
             <div 
              {...getRootProps()}
@@ -110,7 +110,7 @@ const AttendeeDetails: React.FC<Props> = ({ register, errors, prevStep, imageUrl
 
       </div>
       </div>
-        <div className="w-[90%] h-1 bg-[#07373F] division mx-auto my-8"></div>
+        <div className="w-[90%] h-1 bg-[#07373F] roboto-text division mx-auto my-8"></div>
         <div>
             <div className="w-[90%] mx-auto flex flex-col gap-3">
                 <label className="text-white flex-1" htmlFor="name">Enter your name:</label>
@@ -128,8 +128,8 @@ const AttendeeDetails: React.FC<Props> = ({ register, errors, prevStep, imageUrl
                 <p>{errors.step2?.message?.message}</p>
             </div>
             <div className="flex flex-col w-[90%] gap-3 mt-6 pb-6 mx-auto md:flex-row">
-            <Button className="flex-1 border border-(--secondaryColor) text-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer" onClick={() => prevStep && prevStep()}>Back</Button>
-            <Button className="flex-1 border border-(--secondaryColor) text-white bg-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer" type="submit">Get My Free Ticket</Button>
+            <Button className="jeju-text flex-1 border border-(--secondaryColor) text-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer" onClick={() => prevStep && prevStep()}>Back</Button>
+            <Button className="jeju-text flex-1 border border-(--secondaryColor) text-white bg-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer" type="submit">Get My Free Ticket</Button>
           </div>
         </div>
     </section>

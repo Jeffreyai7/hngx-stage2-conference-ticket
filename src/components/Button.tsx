@@ -16,7 +16,7 @@ const Button = ({
   return (
     <>
       <button
-        className={cn(
+        className={cn( "hover:opacity-80",
           className,
         )}
         onClick={onClick}
