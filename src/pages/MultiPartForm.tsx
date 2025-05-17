@@ -43,6 +43,7 @@ const MultiPartForm = () => {
     formState: { errors },
     setValue,
     watch,
+    trigger,
     reset,
   } = useForm({
     resolver: zodResolver(schema),
@@ -79,6 +80,7 @@ const MultiPartForm = () => {
             errors={errors}
             nextStep={nextStep}
             setValue={setValue}
+            trigger={trigger}
           />
         )}
         {step === 2 && (

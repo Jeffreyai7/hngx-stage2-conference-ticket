@@ -6,6 +6,7 @@ type Props = {
   errors: any;
   nextStep?: () => void;
   prevStep?: () => void;
+  trigger?: any;
   handleSubmit?: any;
   setValue: any; // from react-hook-form
 };
@@ -15,6 +16,7 @@ const TicketSelection: React.FC<Props> = ({
   nextStep,
   errors,
   setValue,
+  trigger,
 }) => {
   const [selectedTicket, setSelectedTicket] = useState<string>("");
 

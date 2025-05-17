@@ -1,6 +1,8 @@
 import Button from "./Button";
 import { FormData } from "../../lib/validation";
 import { useNavigate } from "react-router-dom";
+import html2canvas from "html2canvas";
+import { useRef } from "react";
 
 type Props = {
   formData: FormData;
@@ -10,6 +12,21 @@ type Props = {
 
 const TicketReady: React.FC<Props> = ({ formData, imageUrl }) => {
   const navigate = useNavigate();
+
+  const ticketRef = useRef<HTMLDivElement>(null); // ref for the ticket element
+
+  const handleDownload = async () => {
+    if (ticketRef.current) {
+      const canvas = await html2canvas(ticketRef.current);
+      const dataUrl = canvas.toDataURL("image/png");
+
+      const link = document.createElement("a");
+      link.href = dataUrl;
+      link.download = "techember-ticket.png";
+      link.click();
+    }
+  };
+
   return (
     <section className="w-[95%] max-w-[600px] mx-auto">
       <div className="bg-(--primaryColor) z-30 sticky top-[68px] mb-[32px]">
@@ -31,7 +48,10 @@ const TicketReady: React.FC<Props> = ({ formData, imageUrl }) => {
         </div>
         {/* ticket header end */}
         {/* Main ticket start */}
-        <div className="ticketback flex flex-col justify-center items-center gap-2 w-[300px] h-[600px]">
+        <div
+          ref={ticketRef} // attach the ref to the ticket element
+          className="ticketback flex flex-col justify-center items-center gap-2 w-[300px] h-[600px]"
+        >
           <div className="w-[16.25rem] h-[27.8rem] p-2 border-2 border-[#133D44] rounded-[16px]">
             <div className="text-center text-white">
               <h1 className="text-[1.5rem] road-rage-text">
@@ -111,7 +131,10 @@ const TicketReady: React.FC<Props> = ({ formData, imageUrl }) => {
           >
             Book Another Ticket
           </Button>
-          <Button className="jeju-text flex-1 border border-(--secondaryColor) text-white bg-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer">
+          <Button
+            onClick={handleDownload}
+            className="jeju-text flex-1 border border-(--secondaryColor) text-white bg-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer"
+          >
             Download Ticket
           </Button>
         </div>
