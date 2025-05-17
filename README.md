@@ -1,10 +1,14 @@
-🎟️ Event Ticket App
+## 🎟️ Event Ticket App
+
 A sleek, user-friendly React application for generating, downloading, and managing event tickets. Whether you're going to a concert, conference, or comedy night, this app has you covered.
 
-📍 Live Demo
+
+##  📍 Live Demo
+
 🔗 Try it now: https://hngx-stage2-conference-ticket.vercel.app
 
-🚀 Features
+##  🚀 Features
+
 Multi-step Ticket Booking Form
 Guided, user-friendly form powered by react-hook-form and Zod validation.
 
@@ -21,7 +25,8 @@ Smooth UI/UX
 Built with modern tools like Framer Motion for buttery transitions.
 
 
-🧰 Tech Stack
+##  🧰 Tech Stack
+
 React (with functional components)
 
 React Hook Form – form handling
@@ -34,16 +39,17 @@ React Router – page navigation
 
 HTML2Canvas / jsPDF (optional) – for ticket download/export functionality
 
-📦 Installation
-bash
-Copy
-Edit
+
+##  📦 Installation
+
 git clone https://github.com/yourusername/event-ticket-app.git
 cd event-ticket-app
 npm install
 npm run dev # or npm start
 
-🧪 Usage
+
+##  🧪 Usage
+
 Fill in Event Details
 You can use the guided form to input your name, event type, date, seat number, etc.
 
@@ -56,10 +62,9 @@ Hit the Download button to save your ticket.
 Manage Tickets
 Access your saved tickets anytime in the "My Tickets" section. Delete unwanted tickets easily.
 
-📂 Project Structure
-bash
-Copy
-Edit
+
+##  📂 Project Structure
+
 src/
 ├── components/         # Form steps, ticket display, buttons
 ├── hooks/              # Custom form and state management hooks
@@ -67,7 +72,10 @@ src/
 ├── utils/              # Utility functions (e.g., download handlers)
 ├── App.tsx             # Main app component with routes
 └── main.tsx            # React entry point
-🔮 Future Improvements
+
+
+##  🔮 Future Improvements
+
 ✅ Share tickets via email or QR code
 
 ✅ Print-friendly layout
@@ -76,10 +84,14 @@ src/
 
 🔜 Admin panel for managing events and user data
 
-👨‍💻 Contributing
+
+##  👨‍💻 Contributing
+
 Pull requests are welcome! If you have suggestions for improvements or additional features, open an issue, fork the repo, and submit a PR.
 
-🛡️ License
+
+##  🛡️ License
+
 This project is licensed under the MIT License – see the LICENSE file for details.
 
 
