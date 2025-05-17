@@ -82,6 +82,7 @@ const MultiPartForm = () => {
             setValue={setValue}
             trigger={trigger}
             watch={watch}
+            reset={reset}
           />
         )}
         {step === 2 && (

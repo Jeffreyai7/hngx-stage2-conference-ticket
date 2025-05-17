@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Button from "./Button";
 
 type Props = {
@@ -9,6 +9,7 @@ type Props = {
   watch: any; // from react-hook-form
   trigger?: any;
   handleSubmit?: any;
+  reset: any;
   setValue: any; // from react-hook-form
 };
 
@@ -19,6 +20,7 @@ const TicketSelection: React.FC<Props> = ({
   setValue,
   trigger,
   watch,
+  reset,
 }) => {
   const ticketTypeRef = useRef<HTMLDivElement>(null);
   const ticketNumberRef = useRef<HTMLSelectElement>(null);
@@ -30,6 +32,9 @@ const TicketSelection: React.FC<Props> = ({
     await trigger("step1.ticketType");
   };
 
+  const handleReset = () => {
+    reset({});
+  };
   const handleNext = async () => {
     const isValid = await trigger(["step1.ticket", "step1.ticketType"]);
     if (isValid && nextStep) {
@@ -57,7 +62,7 @@ const TicketSelection: React.FC<Props> = ({
 
   return (
     <section className="w-[95%] max-w-[600px] mx-auto">
-      <div className="bg-(--primaryColor) z-30 sticky top-[68px] mb-[32px]">
+      <div className="bg-(--primaryColor) z-0 sticky top-[68px] mb-[32px]">
         <div className="flex justify-between w-[90%] mx-auto items-center  text-white">
           <h1 className="text-[24px] jeju-text md:text-[32px]">
             Ticket Selection
@@ -150,7 +155,10 @@ const TicketSelection: React.FC<Props> = ({
             )}
           </div>
           <div className="flex flex-col w-[90%] gap-3 mt-6 pb-6 mx-auto md:flex-row">
-            <Button className="jeju-text flex-1 border border-(--secondaryColor) text-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer">
+            <Button
+              onClick={handleReset}
+              className="jeju-text flex-1 border border-(--secondaryColor) text-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer"
+            >
               Cancel
             </Button>
             <Button

@@ -17,13 +17,40 @@ const TicketReady: React.FC<Props> = ({ formData, imageUrl }) => {
 
   const handleDownload = async () => {
     if (ticketRef.current) {
-      const canvas = await html2canvas(ticketRef.current);
-      const dataUrl = canvas.toDataURL("image/png");
+      const img = ticketRef.current.querySelector("img");
+
+      if (img && !img.complete) {
+        await new Promise((resolve) => {
+          img.onload = resolve;
+          img.onerror = resolve; // resolve even if it fails to avoid hanging
+        });
+      }
+
+      const canvas = await html2canvas(ticketRef.current, {
+        useCORS: true,
+        allowTaint: false,
+      });
+
+      const dataUrl = canvas.toDataURL("image/png", 1.0);
 
       const link = document.createElement("a");
       link.href = dataUrl;
       link.download = "techember-ticket.png";
       link.click();
+
+      const existingTickets = JSON.parse(
+        localStorage.getItem("myTickets") || "[]"
+      );
+      const newTicket = {
+        id: Date.now(),
+        dataUrl,
+        formData,
+      };
+
+      localStorage.setItem(
+        "myTickets",
+        JSON.stringify([...existingTickets, newTicket])
+      );
     }
   };
 
@@ -50,7 +77,7 @@ const TicketReady: React.FC<Props> = ({ formData, imageUrl }) => {
         {/* Main ticket start */}
         <div
           ref={ticketRef} // attach the ref to the ticket element
-          className="ticketback flex flex-col justify-center items-center gap-2 w-[300px] h-[600px]"
+          className="ticketback flex flex-col justify-center items-center gap-2 w-[300px] h-[400px]"
         >
           <div className="w-[16.25rem] h-[27.8rem] p-2 border-2 border-[#133D44] rounded-[16px]">
             <div className="text-center text-white">
