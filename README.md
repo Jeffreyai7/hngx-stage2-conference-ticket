@@ -1,50 +1,88 @@
-# React + TypeScript + Vite
+🎟️ Event Ticket App
+A sleek, user-friendly React application for generating, downloading, and managing event tickets. Whether you're going to a concert, conference, or comedy night, this app has you covered.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📍 Live Demo
+🔗 Try it now: https://hngx-stage2-conference-ticket.vercel.app
 
-Currently, two official plugins are available:
+🚀 Features
+Multi-step Ticket Booking Form
+Guided, user-friendly form powered by react-hook-form and Zod validation.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Generate Tickets Instantly
+After submitting your event info, a ticket is generated in real-time.
 
-## Expanding the ESLint configuration
+Download as an Image 
+Save your ticket directly with one click (great for mobile and offline access).
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Ticket Storage
+All generated tickets are stored locally, so users can view or delete them anytime.
 
-- Configure the top-level `parserOptions` property like this:
+Smooth UI/UX
+Built with modern tools like Framer Motion for buttery transitions.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+🧰 Tech Stack
+React (with functional components)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+React Hook Form – form handling
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Zod – schema-based validation
+
+Framer Motion – animations and transitions
+
+React Router – page navigation
+
+HTML2Canvas / jsPDF (optional) – for ticket download/export functionality
+
+📦 Installation
+bash
+Copy
+Edit
+git clone https://github.com/yourusername/event-ticket-app.git
+cd event-ticket-app
+npm install
+npm run dev # or npm start
+
+🧪 Usage
+Fill in Event Details
+You can use the guided form to input your name, event type, date, seat number, etc.
+
+Generate Ticket
+Click Submit, and your personalized ticket will appear instantly.
+
+Download Ticket
+Hit the Download button to save your ticket.
+
+Manage Tickets
+Access your saved tickets anytime in the "My Tickets" section. Delete unwanted tickets easily.
+
+📂 Project Structure
+bash
+Copy
+Edit
+src/
+├── components/         # Form steps, ticket display, buttons
+├── hooks/              # Custom form and state management hooks
+├── pages/              # Route views (Home, My Tickets, Not Found)
+├── utils/              # Utility functions (e.g., download handlers)
+├── App.tsx             # Main app component with routes
+└── main.tsx            # React entry point
+🔮 Future Improvements
+✅ Share tickets via email or QR code
+
+✅ Print-friendly layout
+
+🔜 Backend integration (Firebase/Dwolla, etc.) for persistent storage
+
+🔜 Admin panel for managing events and user data
+
+👨‍💻 Contributing
+Pull requests are welcome! If you have suggestions for improvements or additional features, open an issue, fork the repo, and submit a PR.
+
+🛡️ License
+This project is licensed under the MIT License – see the LICENSE file for details.
+
+
+
+
+
