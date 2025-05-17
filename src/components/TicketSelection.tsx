@@ -91,6 +91,11 @@ const TicketSelection: React.FC<Props> = ({
                 );
               })}
             </div>
+            {errors.step1?.ticketType && (
+              <p className="text-red-500 text-sm">
+                {errors.step1.ticketType.message}
+              </p>
+            )}
           </div>
           <div className="roboto-text w-[90%] mx-auto flex flex-col gap-3">
             <label className="text-white flex-1" htmlFor="number of tickets">
@@ -147,7 +152,15 @@ const TicketSelection: React.FC<Props> = ({
             </Button>
             <Button
               className="jeju-text flex-1 border border-(--secondaryColor) text-white bg-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer"
-              onClick={nextStep ? nextStep : undefined}
+              onClick={async () => {
+                const isValid = await trigger([
+                  "step1.ticket",
+                  "step1.ticketType",
+                ]);
+                if (isValid && nextStep) {
+                  nextStep();
+                }
+              }}
             >
               Next
             </Button>
