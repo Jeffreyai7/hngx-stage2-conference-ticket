@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Button from "./Button";
 
 type Props = {
@@ -6,6 +6,7 @@ type Props = {
   errors: any;
   nextStep?: () => void;
   prevStep?: () => void;
+  watch: any; // from react-hook-form
   trigger?: any;
   handleSubmit?: any;
   setValue: any; // from react-hook-form
@@ -17,15 +18,37 @@ const TicketSelection: React.FC<Props> = ({
   errors,
   setValue,
   trigger,
+  watch,
 }) => {
-  const [selectedTicket, setSelectedTicket] = useState<string>("");
+  const ticketTypeRef = useRef<HTMLDivElement>(null);
+  const ticketNumberRef = useRef<HTMLSelectElement>(null);
 
-  const handleSelectTicket = (type: string) => {
-    console.log("Selected ticket type:", type);
-    setSelectedTicket(type);
-    setValue("step1.ticketType", type); // Store in react-hook-form
+  const selectedTicket = watch("step1.ticketType");
+
+  const handleSelectTicket = async (type: string) => {
+    setValue("step1.ticketType", type, { shouldValidate: true });
+    await trigger("step1.ticketType");
   };
 
+  const handleNext = async () => {
+    const isValid = await trigger(["step1.ticket", "step1.ticketType"]);
+    if (isValid && nextStep) {
+      nextStep();
+    } else {
+      // scroll to the first error field
+      if (errors.step1?.ticketType && ticketTypeRef.current) {
+        ticketTypeRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      } else if (errors.step1?.ticket && ticketNumberRef.current) {
+        ticketNumberRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }
+    }
+  };
   const ticketOptions = [
     { type: "Free", label: "Regular Access", price: "Free" },
     { type: "VIP", label: "VIP Access", price: "$150" },
@@ -68,28 +91,29 @@ const TicketSelection: React.FC<Props> = ({
         <div>
           <div className="w-[90%] mx-auto my-6">
             <span className="text-white roboto-text">Select Ticket Type:</span>
-            <div className="flex flex-col mt-2.5 gap-6 bg-[#052228] max-w-[556px] p-2  border border-[#197686] rounded-[12px] md:flex-row text-white">
-              {ticketOptions.map((ticket) => {
-                return (
-                  <div
-                    key={ticket.type}
-                    onClick={() => handleSelectTicket(ticket.type)}
-                    className={`${
-                      selectedTicket === ticket.type
-                        ? "bg-(--selectColor)"
-                        : "hover:bg-(--hoverColor)"
-                    } flex-1 h-28 border border-[#197686] rounded-[12px] p-3 flex flex-col cursor-pointer hover:bg-(--hoverColor)`}
-                  >
-                    <span className="text-[24px] font-semibold roboto-text">
-                      {ticket.price}
-                    </span>
-                    <span className="text-[16px] roboto-text">
-                      {ticket.label}
-                    </span>
-                    <span className="text-[14px] roboto-text">20/52</span>
-                  </div>
-                );
-              })}
+            <div
+              ref={ticketTypeRef}
+              className="flex flex-col mt-2.5 gap-6 bg-[#052228] max-w-[556px] p-2 border border-[#197686] rounded-[12px] md:flex-row text-white"
+            >
+              {ticketOptions.map((ticket) => (
+                <div
+                  key={ticket.type}
+                  onClick={() => handleSelectTicket(ticket.type)}
+                  className={`${
+                    selectedTicket === ticket.type
+                      ? "bg-(--selectColor)"
+                      : "hover:bg-(--hoverColor)"
+                  } flex-1 h-28 border border-[#197686] rounded-[12px] p-3 flex flex-col cursor-pointer`}
+                >
+                  <span className="text-[24px] font-semibold roboto-text">
+                    {ticket.price}
+                  </span>
+                  <span className="text-[16px] roboto-text">
+                    {ticket.label}
+                  </span>
+                  <span className="text-[14px] roboto-text">20/52</span>
+                </div>
+              ))}
             </div>
             {errors.step1?.ticketType && (
               <p className="text-red-500 text-sm">
@@ -97,54 +121,33 @@ const TicketSelection: React.FC<Props> = ({
               </p>
             )}
           </div>
+
+          {/* Ticket Quantity */}
           <div className="roboto-text w-[90%] mx-auto flex flex-col gap-3">
-            <label className="text-white flex-1" htmlFor="number of tickets">
+            <label htmlFor="number of tickets" className="text-white">
               Number of Tickets
             </label>
             <select
-              className="text-white w-full flex-1 border border-[#07373F] p-3 rounded-[12px]"
+              ref={ticketNumberRef}
+              className="text-white w-full border border-[#07373F] p-3 rounded-[12px]"
               id="number of tickets"
               {...register("step1.ticket")}
             >
-              <option
-                className="text-white bg-[#07373F] text-sm md:text-base"
-                value="1"
-              >
-                1
-              </option>
-              <option
-                className="text-white bg-[#07373F] text-sm md:text-base"
-                value="2"
-              >
-                2
-              </option>
-              <option
-                className="text-white bg-[#07373F] text-sm md:text-base"
-                value="3"
-              >
-                3
-              </option>
-              <option
-                className="text-white bg-[#07373F] text-sm md:text-base"
-                value="4"
-              >
-                4
-              </option>
-              <option
-                className="text-white bg-[#07373F] text-sm md:text-base"
-                value="5"
-              >
-                5
-              </option>
-              <option
-                className="text-white bg-[#07373F] text-sm md:text-base"
-                value="6"
-              >
-                6
-              </option>
+              {[1, 2, 3, 4, 5, 6].map((num) => (
+                <option
+                  key={num}
+                  className="text-white bg-[#07373F]"
+                  value={num}
+                >
+                  {num}
+                </option>
+              ))}
             </select>
-            <p>{errors.step1?.ticket?.message}</p>
-            {/* <input className="text-white flex-1 border border-[#07373F] p-3 rounded-[12px]"  type="number" name="tickets" id="number of tickets" /> */}
+            {errors.step1?.ticket && (
+              <p className="text-red-500 text-sm">
+                {errors.step1.ticket.message}
+              </p>
+            )}
           </div>
           <div className="flex flex-col w-[90%] gap-3 mt-6 pb-6 mx-auto md:flex-row">
             <Button className="jeju-text flex-1 border border-(--secondaryColor) text-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer">
@@ -152,15 +155,7 @@ const TicketSelection: React.FC<Props> = ({
             </Button>
             <Button
               className="jeju-text flex-1 border border-(--secondaryColor) text-white bg-(--secondaryColor) py-6 px-3 text-[16px] rounded-[12px] cursor-pointer"
-              onClick={async () => {
-                const isValid = await trigger([
-                  "step1.ticket",
-                  "step1.ticketType",
-                ]);
-                if (isValid && nextStep) {
-                  nextStep();
-                }
-              }}
+              onClick={handleNext}
             >
               Next
             </Button>
